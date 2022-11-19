@@ -1,4 +1,4 @@
-# countdown
+# countdown-qatar-2022
 
 ## Project setup
 ```
