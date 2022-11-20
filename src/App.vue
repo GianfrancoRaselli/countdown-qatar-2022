@@ -9,7 +9,7 @@
         }
       "
     >
-      <span class="tooltip" v-text="(animations ? 'Pause' : 'Play') + ' animations'" />
+      <span class="tooltip" v-text="(animations ? 'Detener' : 'Iniciar') + ' animaciones'" />
       <fa-icon icon="play" class="icon" v-if="!animations" />
       <fa-icon icon="pause" class="icon" v-else />
     </div>
@@ -19,7 +19,12 @@
     </div>
 
     <div class="countdown">
-      <h1 class="title">Partido Inagural Copa del Mundo Qatar 2022</h1>
+      <div class="title-container">
+        <img class="img flag-img" src="@/assets/flags/argentina.png" />
+        <h1 class="title" v-text="title" />
+        <span class="h1 title-vs" v-text="'vs.'" />
+        <img class="img flag-img" src="@/assets/flags/arabia-saudita.png" />
+      </div>
 
       <div class="elements">
         <CountdownElement title="Horas" :num="hours" />
@@ -43,8 +48,9 @@ export default {
   },
   data() {
     return {
+      title: 'Argentina vs. Arabia Saudita', //Partido Inagural Copa del Mundo Qatar 2022
       distance: 0,
-      dateTo: new Date('2022-11-20T16:00:00+00:00'),
+      dateTo: new Date('2022-11-22T07:00:00-03:00'), //2022-11-20T16:00:00+00:00
       intervalSubscription: null,
       animations: false,
       imgHeaderAnimationSubscription: null,
@@ -112,7 +118,7 @@ export default {
     const computeDistanceFromNow = () => {
       const distance = this.dateTo.getTime() - new Date().getTime();
       if (distance < 0) this.distance = 0;
-      return (this.distance = distance);
+      else this.distance = distance;
     };
     computeDistanceFromNow();
     this.intervalSubscription = setInterval(function () {
@@ -226,6 +232,39 @@ body {
   width: 25rem;
 }
 
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flag-img {
+  max-height: 2rem;
+  width: 3rem;
+  border-radius: 0 !important;
+}
+
+.title-vs {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .title {
+    display: none;
+  }
+
+  .flag-img {
+    max-height: 4rem;
+    width: 6rem;
+  }
+
+  .title-vs {
+    display: inline;
+  }
+}
+
 .countdown {
   text-align: center;
   color: rgb(255, 250, 245);
@@ -248,7 +287,13 @@ body {
   display: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
+  html {
+    font-size: 85%;
+  }
+}
+
+@media (max-width: 650px) {
   html {
     font-size: 70%;
   }
