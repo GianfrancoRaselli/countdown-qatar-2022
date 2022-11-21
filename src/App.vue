@@ -22,7 +22,7 @@
       <div class="title-container">
         <img class="img flag-img" src="@/assets/flags/argentina.png" />
         <h1 class="title" v-text="title" />
-        <span class="h1 title-vs" v-text="'vs.'" />
+        <span class="h1 title-vs">-</span>
         <img class="img flag-img" src="@/assets/flags/arabia-saudita.png" />
       </div>
 
@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      title: 'Argentina vs. Arabia Saudita', //Partido Inagural Copa del Mundo Qatar 2022
+      title: 'Argentina - Arabia Saudita', //Partido Inagural Copa del Mundo Qatar 2022
       distance: 0,
       dateTo: new Date('2022-11-22T07:00:00-03:00'), //2022-11-20T16:00:00+00:00
       intervalSubscription: null,
@@ -134,8 +134,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Arvo:ital@1&display=swap');
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '@/assets/css/fonts.css';
 @import 'animate.css';
 
 * {
@@ -143,7 +142,8 @@ export default {
 }
 
 body {
-  font-family: 'Arvo', serif;
+  font-family: 'Mali', cursive;
+  margin: 0;
 }
 
 .content {
