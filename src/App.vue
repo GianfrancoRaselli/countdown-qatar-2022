@@ -143,6 +143,7 @@ export default {
 
 body {
   font-family: 'Mali', cursive;
+  padding: 0;
   margin: 0;
 }
 
